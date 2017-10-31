@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherBoard renders correctly 1`] = `
+<div
+  className="weather-board"
+>
+  <table
+    className="weather-table"
+  >
+    <thead>
+      <tr>
+        <th
+          className="title"
+        >
+          forecastTime: 
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          城市： 
+          沒有資料
+        </td>
+      </tr>
+      <tr>
+        <td>
+          溫度： 
+          沒有資料
+        </td>
+      </tr>
+      <tr>
+        <td>
+          最高溫度： 
+          沒有資料
+        </td>
+      </tr>
+      <tr>
+        <td>
+          最低溫度： 
+          沒有資料
+        </td>
+      </tr>
+      <tr>
+        <td>
+          濕度： 
+          沒有資料
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Clouds: 
+          沒有資料
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

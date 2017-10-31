@@ -15,6 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       temp: '',
       temp_min: '',
       temp_max: '',
@@ -33,8 +34,9 @@ class App extends Component {
   }
 
   mapDataToState = data => {
-    const { main, clouds, weather, dt } = data;
+    const { main, clouds, weather, dt, name } = data;
     this.setState({
+      name,
       temp: this.formatDegreeToCelsius(main.temp),
       temp_min: this.formatDegreeToCelsius(main.temp_min),
       temp_max: this.formatDegreeToCelsius(main.temp_max),
@@ -53,14 +55,12 @@ class App extends Component {
     e.preventDefault();
     const cityName = e.target.elements[0].value;
     if (!cityName) {
-      window.alert('城市名稱不可為空!');
-      return;
+      return window.alert('城市名稱不可為空!');
     }
     fetchCurrentWeatherByCityName(cityName)
       .then(json => {
         if (!json) {
-          window.alert('伺服器沒有資料');
-          return;
+          return window.alert('伺服器沒有資料');
         }
         this.mapDataToState(json);
       });
