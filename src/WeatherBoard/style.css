@@ -1,0 +1,8 @@
+.weather-board {
+  text-align: center;
+}
+
+.weather-table {
+  display: inline-block;
+  margin-top: 32px;
+}
