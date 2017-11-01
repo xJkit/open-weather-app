@@ -16,8 +16,7 @@ const getRequest = async (endpoint, queries) => {
     }
     return await res.json();
   } catch (error) {
-    const errorMessage = error || NOT_FOUND;
-    return Promise.reject(errorMessage);
+    return Promise.reject(error || NOT_FOUND);
   }
 }
 

@@ -26,11 +26,8 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    fetchCurrentWeatherByCityName('taiwan')
-    .then(json => {
-      this.mapDataToState(json);
-    });
+  componentDidMount = async () => {
+    this.loadDataByCityName('taiwan');
   }
 
   mapDataToState = data => {
@@ -51,19 +48,25 @@ class App extends Component {
     return Math.floor(kelvin - 273.15);
   }
 
-  handleFormSubmit = (e) => {
+  loadDataByCityName = async cityName => {
+    try {
+      const jsonData = await fetchCurrentWeatherByCityName(cityName);
+      this.mapDataToState(jsonData);
+    } catch (error) {
+      window.alert('Load city data failed, please try again. If you have no api key, check readme.md firstly.');
+    }
+  }
+
+  handleFormSubmit = async (e) => {
     e.preventDefault();
     const cityName = e.target.elements[0].value;
     if (!cityName) {
       return window.alert('城市名稱不可為空!');
     }
-    fetchCurrentWeatherByCityName(cityName)
-      .then(json => {
-        if (!json) {
-          return window.alert('伺服器沒有資料');
-        }
-        this.mapDataToState(json);
-      });
+    console.log('====================================');
+    console.log(`search weather info of city ${cityName}`);
+    console.log('====================================');
+    this.loadDataByCityName(cityName);
   }
 
   render() {
