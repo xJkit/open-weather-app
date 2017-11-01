@@ -1,9 +1,13 @@
 {
   "name": "open-weather-app",
+  "email": "xjkit54780@gmail.com",
+  "url": "https://github.com/xJkit/open-weather-app",
+  "author": "Jay Chung",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "jest": "^21.2.1",
+    "jest-fetch-mock": "^1.2.1",
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
