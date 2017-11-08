@@ -9,7 +9,7 @@ import './style.css';
  */
 import { fetchCurrentWeatherByCityName } from 'actions';
 
-const timeFormat = 'YYYY 年 MM 月 DD 日';
+export const timeFormat = 'YYYY 年 MM 月 DD 日';
 
 class App extends Component {
   constructor(props) {
