@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import moment from 'moment';
+import sinon from 'sinon';
 import App from './index';
 
 describe('App component class', () => {
@@ -30,5 +31,14 @@ describe('App component class', () => {
     expect(AppWrapper.state().clouds).toEqual(0);
     expect(AppWrapper.state().description).toEqual('');
     expect(AppWrapper.state().forecastTime).toEqual(moment(Date.now(App)).format('YYYY 年 MM 月 DD 日'));
+  });
+
+  /**
+   * Asynchronouns calls testing
+   */
+  test('should call fetch on component mount', () => {
+    global.fetch = sinon.stub();
+    mount(<App />);
+    expect(fetch.callCount).toEqual(1);
   });
 });

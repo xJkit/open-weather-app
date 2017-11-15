@@ -75,19 +75,6 @@ When coping with the unit testing for UI, I use `Snapshot` testing which is part
 
 What Jest does is transfering the UI components to a JSON tree and makes the components to be comparable.
 
-#### Async functions testing
-
-Functions like HTTP api calls are asynchronous, and it is impossible to make a real request via the internet because unit tests should be isolated. Therefore, I use `mock` function to replace them with a fake, callable, and predictable `fetch`.
-
-```js
-  test('should response weather info which exists', async () => {
-    fetch.mockResponse(JSON.stringify(cityInfo.taiwan));
-    await expect(fetchCurrentWeatherByCityName('taiwan')).resolves.toEqual(cityInfo.taiwan);
-  });
-```
-
-Please check the source codes for more detail.
-
 ### HW2 (20171108)
 
 It should test with component class like so:
@@ -124,7 +111,30 @@ describe('App component class', () => {
 });
 ```
 
-asynchronous functions need to be mocked, stubbed or spied, and I leave it in todo list.
+### HW3 (20171115)
+
+#### Stub Async functions
+
+Use stub library [Sinon](http://sinonjs.org/releases/v4.1.2/stubs/) to check the fetch called in component life cycle:
+
+```js
+  test('should call fetch on component mount', () => {
+    global.fetch = sinon.stub();
+    mount(<App />);
+    expect(fetch.callCount).toEqual(1);
+  });
+```
+
+#### Mock Async Functions
+
+Functions like HTTP api calls are asynchronous, and it is impossible to make a real request via the internet because unit tests should be isolated. Therefore, I use `mock` function to replace them with a fake, callable, and predictable `fetch`.
+
+```js
+  test('should response weather info which exists', async () => {
+    fetch.mockResponse(JSON.stringify(cityInfo.taiwan));
+    await expect(fetchCurrentWeatherByCityName('taiwan')).resolves.toEqual(cityInfo.taiwan);
+  });
+```
 
 ## License
 
